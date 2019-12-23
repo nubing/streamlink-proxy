@@ -1,0 +1,50 @@
+name: streamlink-proxy
+version: '1.0.0'
+summary: Streamlink and LiveProxy in one package
+description: |
+  Streamlink is a CLI utility that pipes flash videos from online streaming services to a variety of video players such as VLC.
+
+  LiveProxy is a local Proxyserver between Streamlink and an URL.
+
+base: core18
+grade: stable
+confinement: strict
+
+apps:
+  streamlink:
+    command: bin/streamlink
+    plugs: [network, network-bind]
+      
+  liveproxy:
+    command: bin/liveproxy
+    daemon: simple
+    restart-condition: always
+    plugs: [network, network-bind]
+
+parts:
+  streamlink:
+    plugin: python
+    python-version: python3
+    source: https://github.com/streamlink/streamlink.git
+    source-tag: 1.0.0
+    stage-packages:
+      - ffmpeg
+      - libpulse0
+      - gstreamer1.0-plugins-good
+      - gstreamer1.0-plugins-bad
+      - gstreamer1.0-plugins-ugly
+      - libgpm2
+
+  liveproxy:
+    plugin: python
+    python-version: python3
+    source: https://github.com/back-to/liveproxy.git
+    source-tag: 0.2.0
+    after:
+      - streamlink
+    # filesets:
+    #   exclude-streamlink:
+    #     - -bin/streamlink
+    #     - -lib/python3.6/site-packages/streamlink*
+    # stage:
+    #   - $exclude-streamlink

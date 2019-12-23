@@ -1,0 +1,16 @@
+#EXTM3U
+
+#EXTINF:-1, Level1Tech
+http://127.0.0.1:53422/play/?twitch-disable-hosting=true&default-stream=best&url=twitch.tv/teampgp
+
+#EXTINF:-1, FIDE Chess
+http://127.0.0.1:53422/play/?twitch-disable-hosting=true&default-stream=best&url=twitch.tv/fide_chess
+
+#EXTINF:-1, Microsoft Studios
+http://127.0.0.1:53422/play/?twitch-disable-hosting=true&default-stream=best&url=twitch.tv/microsoftstudios
+
+#EXTINF:-1, AWS
+http://127.0.0.1:53422/play/?twitch-disable-hosting=true&default-stream=best&url=twitch.tv/aws
+
+#EXTINF:-1, Chilled Cow
+http://127.0.0.1:53422/play/?default-stream=480p&url=youtube.com/channel/UCSJ4gkVC6NrvII8umztf0Ow
